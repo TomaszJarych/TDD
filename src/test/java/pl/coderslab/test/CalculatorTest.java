@@ -8,6 +8,8 @@ import pl.coderslab.Calculator;
 
 public class CalculatorTest {
 
+	// powtarzalne zmienne globalne można ustawić w @Before, metoda zawsze musi
+	// być voidem
 	@Test
 	public void testAdd() {
 		// given
@@ -55,7 +57,7 @@ public class CalculatorTest {
 
 	}
 
-	@Test
+	@Test()
 	public void testDivide() {
 		// given
 
@@ -71,6 +73,19 @@ public class CalculatorTest {
 		assertEquals(expected, result);
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void shouldDivdeByZero() {
+
+		// given
+
+		int a = 6;
+		int b = 0;
+		// when
+		Calculator calculator = new Calculator();
+		int result = calculator.divide(a, b);
+
+	}
+
 	@Test
 	public void testGreater() {
 		// given
@@ -84,7 +99,7 @@ public class CalculatorTest {
 		assertTrue(calculator.greater(a, b));
 	}
 
-	@Test
+	@Test()
 	public void evaluatesExpression() {
 		Calculator calculator = new Calculator();
 		int sum = calculator.eval("1+2+3");

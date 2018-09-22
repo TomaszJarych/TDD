@@ -7,7 +7,19 @@ import org.junit.Test;
 import pl.coderslab.MaxValue;
 
 public class MaxValueTest {
+	
+	@Test(expected=RuntimeException.class)
+	public void testLargestEmptyArray() {
+		// given
 
+		int[] list = {};
+
+		// when
+		MaxValue maxValue = new MaxValue();
+		int result = maxValue.largest(list);
+
+	}
+	
 	@Test
 	public void testLargest() {
 		// given

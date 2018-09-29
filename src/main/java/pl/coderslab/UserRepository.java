@@ -23,21 +23,31 @@ public class UserRepository {
 		user.setId(getCounter().getAndIncrement());
 		user.setUserName(username);
 		user.setPassword(password);
-		
-		
+		list.add(user);
+
 	}
 
-	
-	public List<User> getAllUsers(){
-		
-		return null;
-		
-		
+	public List<User> getAllUsers() {
+
+		return list;
+
 	}
-	
-	
+
 	public User getById(Long id) {
-		
-		return null;
+
+		return list.stream().filter(el -> el.getId().equals(id)).findFirst()
+				.orElse(null);
+	}
+
+	public User update(User user) {
+		boolean deleted = delete(user);
+		if (deleted) {
+			list.add(user);
+		}
+		return getById(user.getId());
+	}
+
+	public boolean delete(User user) {
+		return list.removeIf(el -> el.getId().equals(user.getId()));
 	}
 }

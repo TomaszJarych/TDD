@@ -8,44 +8,46 @@ import org.junit.Test;
 import pl.coderslab.Circle;
 
 public class CircleTest {
-	
+
 	private Circle circle;
-	
+
 	@Before
 	public void setUp() {
 		this.circle = new Circle();
-		
+
 	}
 
 	@Test
 	public void returnShouldNotBeEmpty() {
-		//given
-		
+		// given
+
 		double r = 5;
-		
-		//when
+
+		// when
 		assertNotNull(circle.circleArea(r));
-		
+
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void givenRadiusShouldBeGreaterThanZero() {
-		
+
 		double r = -5.0;
 		circle.circleArea(r);
 	}
-	
+
 	@Test
 	public void testCirceRadius() {
-		//given
+		// given
 		double r = 2.0;
+
+		double expectedValue = 12.57;
+
+		// when
 		
-//		double expectedValue = 0.0
-		
+		double result = circle.circleArea(r);
+
+		// then
+		assertEquals(expectedValue, result, 0.1);
 	}
-	
-	
-	
-	
 
 }
